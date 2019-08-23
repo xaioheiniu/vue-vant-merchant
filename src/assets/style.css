@@ -1,0 +1,39 @@
+.van-nav-bar{
+  height: 1.6rem;
+  line-height: 1.45rem;
+  background: #6998e8;
+}
+.van-hairline--top-bottom::after{
+  border: none;
+}
+.van-cell:not(:last-child)::after{
+  border:none;
+}
+ .van-nav-bar .van-nav-bar__title{
+  font-size: 0.486rem;
+  color: #fff;
+}
+.footer-item .van-tabbar-item__icon{
+  font-size: 0.56rem;
+}
+.van-hairline--bottom::after{
+  border:none;
+}
+/*header-left*/
+  .van-nav-bar .van-icon{
+    color:#fff;
+    font-size:0.45rem;
+    margin-bottom: 10px;
+  }
+/*border-left:5px*/
+.borderLeft{
+  padding: 0.405rem;
+
+}
+.van-title{
+  font-size: 0.405rem;
+  border-left: 5px solid #fac030;
+  padding-left: 0.27rem;
+}
+
+
