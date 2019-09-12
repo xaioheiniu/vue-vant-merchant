@@ -14,7 +14,7 @@
                   <van-cell-group>
                     <van-cell title="订单号：1234567890" value="详情"  @click="detail()"/>
                   </van-cell-group>
-                  <order-item></order-item>
+                 <!-- <order-item></order-item>-->
                   <van-cell-group class="item-Btn">
                     <van-button type="default" size="small">取消订单</van-button>
                     <van-button type="danger" size="small" to="/history">查看物流</van-button>
@@ -193,6 +193,22 @@
   }
   .van-pull-refresh{
     overflow: inherit;
+  }
+  .homeItem{
+    display: flex;
+    background: #fff;
+    padding:15px;
+    font-size: 12px;
+    align-items: center;
+    .homeTit p{
+      display: flex;
+      justify-content: space-between;
+      margin: 0;
+      padding: 0 0 10px 15px;
+      &:last-child{
+        padding-bottom: 0;
+      }
+    }
   }
   /*border-top: 1px solid #f1f4f8*/
 </style>

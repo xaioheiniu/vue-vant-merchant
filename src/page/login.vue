@@ -4,14 +4,14 @@
       <van-image width="80" height="80" src="https://img.yzcdn.cn/vant/cat.jpeg"/>
     </div>
     <div class="userInput">
-      <van-field v-model="loginForm.username" placeholder="请输入用户名" left-icon="manager"/>
+      <van-field v-model="Form.user" placeholder="请输入用户名" left-icon="manager"/>
       <van-cell-group class="Pwd">
         <!--<van-field v-model="password" placeholder="请输入用户名" left-icon="lock" />
           <van-checkbox v-model="checked">
           <img width='20' slot="icon" slot-scope="props" :src="props.checked ? icon.active : icon.inactive">
         </van-checkbox>-->
-        <van-field type="text" placeholder="输入新密码" v-if="pwdType" v-model="loginForm.password" left-icon="lock"/>
-        <van-field type="password" placeholder="输入新密码" v-model="loginForm.password" v-else left-icon="lock"/>
+        <van-field type="text" placeholder="输入密码" v-if="pwdType" v-model="Form.pass" left-icon="lock"/>
+        <van-field type="password" placeholder="输入密码" v-model="Form.pass" v-else left-icon="lock"/>
         <div style="line-height:40px">
           <van-image width="20" height="20" :src="seen ? seenImg : unseenImg" @click="changeType()"
                      v-on:mouseover="hoverEye" v-on:mouseout="outEye" class="icon-eye"/>
@@ -32,10 +32,14 @@
         name: "login",
         data() {
             return {
-                loginForm: {
-                    username: 'admin',
-                    password: 'admin'
+                Form: {
+                    user: 'admin',
+                    pass: 'admin'
                 },
+              loginForm:{
+                  username: undefined,
+                  password: undefined
+              },
                 checked: true,
                 seen: '',
                 seenImg: '../../static/images/close_eye.png',
@@ -61,6 +65,8 @@
                 if (this.loginForm.username === '' || this.loginForm.password === '') {
                     Toast('请输入正确的用户/名密码');
                 } else {
+                  this.loginForm.username = '{carrier}_' + this.Form.user
+                  this.loginForm.password = this.Form.pass
                     this.$store.dispatch('LoginByUsername', this.loginForm).then(data => {
                         this.$router.push({path: '/home'})
                     }).catch(response => {

@@ -66,6 +66,9 @@
   };
 </script>
 -->
+
+<!--
+//order.vue
 <template>
   <div>
     <van-row gutter="20" class="row-1">
@@ -180,7 +183,7 @@
   }
   .list-item{
     margin:0.405rem 0 0 0;
-    .van-col--16{
+    .van-col&#45;&#45;16{
       display: flex;
       padding:0.61rem 0;
       div{
@@ -254,7 +257,7 @@
       margin-left:5px;
     }
   }
-  .van-tabs__content--animated{
+  .van-tabs__content&#45;&#45;animated{
     overflow: inherit;
   }
   .van-pull-refresh{
@@ -262,3 +265,79 @@
   }
 </style>
 
+-->
+
+<template>
+  <div id="search_carseries">
+    <div class="search_carseries_wrap">
+      <div class="search">
+        <div class="search_input">
+          <input type="text" v-model="searchval" @input="autosearch()"/>
+          <div class="search_icon">
+            <img :src="searchicon"/>
+          </div>
+        </div>
+      </div>
+      <div class="search_carseries_inner"></div>
+      <div class="carseries_list_wrap">
+        <div class="carseries_list" v-for="(item,index) in oldlist" :key="index" >
+          <input type="radio" :id="item.radio" :value="item.value"  name="seriescar">
+          <label :for="item.radio" @click="Selected(item.value)"><span>{{item.value}}</span></label>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+<script>
+  import searchicon from "../assets/logo.png";
+  export default {
+    data(){
+      return{
+        searchicon:searchicon,
+        carseriesList:[],//获取的车型车系数据
+        searchval:"",//输入框输入的值
+        newlist:[
+          {value:"张孟真",radio:"a1"},
+          {value:"车系名称2",radio:"a2"},
+          {value:"杨磊",radio:"a3"},
+          {value:"张平",radio:"a4"},
+          {value:"邱敏",radio:"a5"},
+          {value:"陈强",radio:"a6"},
+        ] ,
+        oldlist:[{value:"张孟真",radio:"a1"},
+          {value:"车系名称2",radio:"a2"},
+          {value:"杨磊",radio:"a3"},
+          {value:"张平",radio:"a4"},
+          {value:"邱敏",radio:"a5"},
+          {value:"陈强",radio:"a6"}
+        ]
+      }
+    },/*
+    created(){
+      //获取的车型车系数据
+      this.getCarSeries();
+    },*/
+    methods:{
+      autosearch(){
+        this.oldlist=[];
+        //字符串方法indexOf
+        for(let i=0;i<this.newlist.length;i++){
+          //如果字符串中不包含目标字符会返回-1
+          if(this.newlist[i].value.indexOf(this.searchval)>=0){
+            this.oldlist.push(this.newlist[i]);
+          }
+        }
+        return this.oldlist;
+      },
+      /*getCarSeries(){
+        getCarList({isAfterSale:true}).then(res=>{
+          console.log(res.data)
+        })
+      },*/
+      Selected(val){
+        console.log('2被选中的值为'+val);
+        Cookies.set('carSeries', val);
+      },
+    }
+  }
+</script>

@@ -6,7 +6,7 @@
           <p><span>宜家运输</span><span>普货</span></p>
           <p><span>驾龄6年以上</span></p>
           <p><span>卡车：13米*12米*10米</span><van-button size='small' type="info">任务分配</van-button></p>
-          <!--<p v-for="orderItem in orderItem"><span>{{orderItem.orderName}}</span><span>{{orderItem.orderType}}</span></p>-->
+          <!--<p v-for="orderItem in orderItem"><span>{{orderItem.name}}</span><span>{{orderItem.orderL}}</span></p>-->
         </div>
       </van-col>
     </div>
@@ -23,7 +23,12 @@
         ],
         list1:[
           {orderL:'支付', name:'卡车：13米*12米*10米'},
-        ]
+        ],
+        /*orderItem:[
+          {orderL:'普货', name:'运输商家品牌'},
+          {orderL:'', name:'驾驶6年以上'},
+          {orderL:'支付', name:'卡车：13米*12米*10米'},
+        ]*/
       }
     }
 	}

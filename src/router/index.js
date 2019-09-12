@@ -23,6 +23,7 @@ import Login from  '@/page/login'
 import FindBack from  '@/page/findBack'
 import Allot from  '@/page/allot'
 import CarDetail from  '@/page/carDetail'
+import Register from  '@/page/register'
 
 
 Vue.use(Router)
@@ -30,6 +31,7 @@ Vue.use(Router)
 const router = new Router({
 
   routes: [
+    { path: '*', name: 'login', component: HelloWorld ,meta:{index:0,keepAlive: true }},
     { path: '/', name: 'login', component: Login ,meta:{index:0,keepAlive: true }},
     { path: '/orderItem', name: 'OrderItem', component: OrderItem },
     { path:'/home', name:'Home', component:Home,
@@ -48,6 +50,7 @@ const router = new Router({
         },
       ]
     },
+    { path:'/register', name:'Register', component:Register},
     { path:'/recommend', name:'Recommend', component:Recommend,meta:{index:0,keepAlive: true } },
     { path:'/messages', name:'Messages', component:Messages,meta:{index:0,keepAlive: true } },
     { path:'/my', name:'My', component:My,meta:{index:0,keepAlive: true } },
